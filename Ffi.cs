@@ -7,7 +7,7 @@ namespace Gxt.Net
 {
     static class Native
     {
-        private const string Lib = "gxt_simple_c.dll";
+        private const string Lib = "dll\\Release\\gxt_simple_c.dll";
 
         [DllImport(Lib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         internal static extern IntPtr gxt_execute(byte[] input, out int result);
