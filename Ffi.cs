@@ -22,22 +22,22 @@ namespace Gxt.Net
     }
 
     internal class MakeKey {
-        public string action { get; private set; } = "make_key";
+        public string action { get; private set; } = "MakeKey";
     }
     internal class MakeIdCard<T>
     {
-        public string action { get; private set; } = "make_id_card";
+        public string action { get; private set; } = "MakeIdCard";
         public string key { get; set; }
         public T meta {  get; set; }
     }
     internal class Verify
     {
-        public string action { get; private set; } = "verify";
+        public string action { get; private set; } = "Verify";
         public string msg { get; set; }
     }
     internal class Encrypt<T>
     {
-        public string action { get; private set; } = "encrypt";
+        public string action { get; private set; } = "Encrypt";
         public string key { get; set; }
         public string to {  get; set; }
         public T payload { get; set; }
@@ -45,7 +45,7 @@ namespace Gxt.Net
     }
     internal class Decrypt
     {
-        public string action { get; private set; } = "decrypt";
+        public string action { get; private set; } = "Decrypt";
         public string key { get; set; }
         public string msg { get; set; }
     }
