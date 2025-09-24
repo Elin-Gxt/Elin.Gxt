@@ -49,7 +49,7 @@
     <Compile Include="Ffi.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeLibs Include="$(MSBuildThisFileDirectory)**\*.dll" />
+    <NativeLibs Include="$(MSBuildThisFileDirectory)dll\release\*.dll" />
     <None Include="@(NativeLibs)">
       <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
