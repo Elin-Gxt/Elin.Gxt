@@ -30,6 +30,12 @@ namespace Gxt.Net
         public string key { get; set; }
         public T meta {  get; set; }
     }
+    internal class MakeIdCardDynamic
+    {
+        public string action { get; private set; } = "MakeIdCard";
+        public string key { get; set; }
+        public dynamic meta {  get; set; }
+    }
     internal class Verify
     {
         public string action { get; private set; } = "Verify";
@@ -41,6 +47,14 @@ namespace Gxt.Net
         public string key { get; set; }
         public string to {  get; set; }
         public T payload { get; set; }
+        public string? parent { get; set; }
+    }
+    internal class EncryptDynamic
+    {
+        public string action { get; private set; } = "Encrypt";
+        public string key { get; set; }
+        public string to {  get; set; }
+        public dynamic payload { get; set; }
         public string? parent { get; set; }
     }
     internal class Decrypt
@@ -58,10 +72,16 @@ namespace Gxt.Net
         public static string Execute<T>(MakeIdCard<T> cmd) {
             return _execute(JsonConvert.SerializeObject(cmd));
         }
+        public static string Execute(MakeIdCardDynamic cmd) {
+            return _execute(JsonConvert.SerializeObject(cmd));
+        }
         public static string Execute(Verify cmd) {
             return _execute(JsonConvert.SerializeObject(cmd));
         }
         public static string Execute<T>(Encrypt<T> cmd) {
+            return _execute(JsonConvert.SerializeObject(cmd));
+        }
+        public static string Execute(EncryptDynamic cmd) {
             return _execute(JsonConvert.SerializeObject(cmd));
         }
         public static string Execute(Decrypt cmd) {
