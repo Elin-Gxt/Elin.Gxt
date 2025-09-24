@@ -46,7 +46,7 @@
     <Compile Include="Elin.Gxt.cs" />
     <Compile Include="Elin.Gxt.Advisory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ffi.cs" />
+    <Compile Include="Elin.Gxt.Ffi.cs" />
   </ItemGroup>
   <ItemGroup>
     <NativeLibs Include="$(MSBuildThisFileDirectory)dll\release\*.dll" />
