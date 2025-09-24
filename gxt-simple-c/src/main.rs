@@ -2,7 +2,7 @@ use gxt::json;
 use serde::Serialize;
 
 #[derive(Serialize)]
-#[serde(untagged)]
+#[serde(tag = "action")]
 pub enum Request {
     MakeKey {},
     MakeIdCard {
