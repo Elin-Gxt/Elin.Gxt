@@ -7,8 +7,8 @@
     <ProjectGuid>{855AFCC2-8796-4389-8F37-4082DC4FDD46}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Gxt.Net</RootNamespace>
-    <AssemblyName>Gxt.Net</AssemblyName>
+    <RootNamespace>Elin.Gxt</RootNamespace>
+    <AssemblyName>Elin.Gxt</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <LangVersion>8</LangVersion>
     <FileAlignment>512</FileAlignment>
@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Gxt.Net.cs" />
-    <Compile Include="Gxt.Net.Advisory.cs" />
+    <Compile Include="Elin.Gxt.cs" />
+    <Compile Include="Elin.Gxt.Advisory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ffi.cs" />
   </ItemGroup>

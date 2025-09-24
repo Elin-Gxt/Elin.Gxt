@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 
 
-namespace Gxt.Net.Advisory
+namespace Elin.Gxt.Advisory
 {
     using Newtonsoft.Json.Converters;
     using System.Collections.Generic;

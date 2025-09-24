@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace Gxt.Net
+namespace Elin.Gxt
 {
     static class Native
     {

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Gxt.Net
+namespace Elin.Gxt
 {
     public enum PayloadKind
     {
