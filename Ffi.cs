@@ -21,25 +21,31 @@ namespace Gxt.Net
         public int ErrorCode { get; set; }
     }
 
-    internal struct MakeKey { }
-    internal struct MakeIdCard<T>
+    internal class MakeKey {
+        public string action { get; private set; } = "make_key";
+    }
+    internal class MakeIdCard<T>
     {
+        public string action { get; private set; } = "make_id_card";
         public string key { get; set; }
         public T meta {  get; set; }
     }
-    internal struct Verify
+    internal class Verify
     {
+        public string action { get; private set; } = "verify";
         public string msg { get; set; }
     }
-    internal struct Encrypt<T>
+    internal class Encrypt<T>
     {
+        public string action { get; private set; } = "encrypt";
         public string key { get; set; }
         public string to {  get; set; }
         public T payload { get; set; }
         public string? parent { get; set; }
     }
-    internal struct Decrypt
+    internal class Decrypt
     {
+        public string action { get; private set; } = "decrypt";
         public string key { get; set; }
         public string msg { get; set; }
     }
