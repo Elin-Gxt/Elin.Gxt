@@ -5,7 +5,7 @@ use gxt::GxtError;
 use serde::Deserialize;
 
 #[derive(Deserialize)]
-#[serde(untagged)]
+#[serde(tag = "action")]
 pub enum Request {
     MakeKey {},
     MakeIdCard {
