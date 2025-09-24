@@ -7,7 +7,7 @@ use serde::Deserialize;
 #[derive(Deserialize)]
 #[serde(untagged)]
 pub enum Request {
-    MakeKey,
+    MakeKey {},
     MakeIdCard {
         key: String,
         meta: serde_json::Value,
@@ -29,7 +29,7 @@ pub enum Request {
 
 fn process(req: Request) -> Result<String, GxtError> {
     match req {
-        Request::MakeKey => Ok(gxt::make_key()),
+        Request::MakeKey {} => Ok(gxt::make_key()),
         Request::MakeIdCard { key, meta } => gxt::make_id_card(&key, meta),
         Request::Verify { msg } => gxt::verify_message::<serde_json::Value>(&msg)
             .and_then(|e| serde_json::to_string(&e).map_err(From::from)),

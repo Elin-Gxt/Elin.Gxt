@@ -16,7 +16,7 @@ namespace Gxt.Net
         internal static extern void free_rust_cstr(IntPtr ptr);
     }
 
-    internal class FfiException : Exception
+    public class FfiException : Exception
     {
         public int ErrorCode { get; set; }
     }
