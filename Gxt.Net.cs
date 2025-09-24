@@ -40,6 +40,11 @@ namespace Gxt.Net
             return Ffi.Execute(new MakeIdCard<T> { key = key, meta = meta });
         }
 
+        public static string MakeIdCard(string key, dynamic meta)
+        {
+            return Ffi.Execute(new MakeIdCardDynamic { key = key, meta = meta });
+        }
+
         public static Envelope<T> VerifyMessage<T>(string message)
         {
             return JsonConvert.DeserializeObject<Envelope<T>>(Ffi.Execute(new Verify { msg = message }));
@@ -48,6 +53,11 @@ namespace Gxt.Net
         public static string EncryptMessage<T>(string key, string id_card, T payload, string? parent = null)
         {
             return Ffi.Execute(new Encrypt<T> { key = key, to = id_card, payload = payload, parent = parent });
+        }
+
+        public static string EncryptMessage(string key, string id_card, dynamic payload, string? parent = null)
+        {
+            return Ffi.Execute(new EncryptDynamic { key = key, to = id_card, payload = payload, parent = parent });
         }
 
         public static Envelope<T> DecryptMessage<T>(string message, string key)
