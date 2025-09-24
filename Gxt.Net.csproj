@@ -63,6 +63,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>cargo build --manifest-path $(SolutionDir)gxt-simple-c\Cargo.toml --release --target-dir $(SolutionDir)dll</PreBuildEvent>
+    <PreBuildEvent>cargo build --manifest-path $(ProjectDir)gxt-simple-c\Cargo.toml --release --target-dir $(ProjectDir)dll</PreBuildEvent>
   </PropertyGroup>
 </Project>
