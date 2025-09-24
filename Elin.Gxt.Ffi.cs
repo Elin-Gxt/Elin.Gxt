@@ -89,6 +89,10 @@ namespace Elin.Gxt
         }
         static string _execute(string s)
         {
+#if DEBUG
+            UnityEngine.Debug.Log($"GXT::EXECUTE: {s}");
+#endif
+
             byte[] utf8 = Encoding.UTF8.GetBytes(s ?? string.Empty);
             var buf = new byte[utf8.Length + 1];
             Buffer.BlockCopy(utf8, 0, buf, 0, utf8.Length);
