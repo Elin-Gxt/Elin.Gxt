@@ -12,6 +12,6 @@ name = "gxt-simple-c-json"
 path = "src/main.rs"
 
 [dependencies]
-gxt = "4.0.0"
+gxt = "4"
 serde = { version = "1", features = ["derive"] }
 serde_json = { version = "1", features = ["preserve_order"] }
