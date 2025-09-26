@@ -37,7 +37,7 @@ namespace Elin.Gxt
             return Ffi.Execute(new MakeIdCard<T> { Key = key, Meta = meta });
         }
 
-        public static string MakeIdCard(string key, dynamic meta)
+        public static string MakeIdCardDynamic(string key, dynamic meta)
         {
             return Ffi.Execute(new MakeIdCardDynamic { Key = key, Meta = meta });
         }
@@ -52,7 +52,7 @@ namespace Elin.Gxt
             return Ffi.Execute(new Encrypt<T> { Key = key, To = id_card, Payload = payload, Parent = parent });
         }
 
-        public static string EncryptMessage(string key, string id_card, dynamic payload, string? parent = null)
+        public static string EncryptMessageDynamic(string key, string id_card, dynamic payload, string? parent = null)
         {
             return Ffi.Execute(new EncryptDynamic { Key = key, To = id_card, Payload = payload, Parent = parent });
         }
