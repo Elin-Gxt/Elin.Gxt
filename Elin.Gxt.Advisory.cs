@@ -1,10 +1,12 @@
 ﻿using Newtonsoft.Json;
 
+#nullable enable
 
 namespace Elin.Gxt.Advisory
 {
     using Newtonsoft.Json.Converters;
     using System.Collections.Generic;
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
     /// <summary>
     /// Simple meta data for an ID card.
@@ -184,5 +186,5 @@ namespace Elin.Gxt.Advisory
         /// </summary>
         Percent
     }
-
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 }

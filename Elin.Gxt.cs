@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 using Newtonsoft.Json;
+
+#nullable enable
 
 namespace Elin.Gxt
 {
@@ -37,32 +34,32 @@ namespace Elin.Gxt
 
         public static string MakeIdCard<T>(string key, T meta)
         {
-            return Ffi.Execute(new MakeIdCard<T> { key = key, meta = meta });
+            return Ffi.Execute(new MakeIdCard<T> { Key = key, Meta = meta });
         }
 
         public static string MakeIdCard(string key, dynamic meta)
         {
-            return Ffi.Execute(new MakeIdCardDynamic { key = key, meta = meta });
+            return Ffi.Execute(new MakeIdCardDynamic { Key = key, Meta = meta });
         }
 
         public static Envelope<T> VerifyMessage<T>(string message)
         {
-            return JsonConvert.DeserializeObject<Envelope<T>>(Ffi.Execute(new Verify { msg = message }));
+            return JsonConvert.DeserializeObject<Envelope<T>>(Ffi.Execute(new Verify { Msg = message }));
         }
 
         public static string EncryptMessage<T>(string key, string id_card, T payload, string? parent = null)
         {
-            return Ffi.Execute(new Encrypt<T> { key = key, to = id_card, payload = payload, parent = parent });
+            return Ffi.Execute(new Encrypt<T> { Key = key, To = id_card, Payload = payload, Parent = parent });
         }
 
         public static string EncryptMessage(string key, string id_card, dynamic payload, string? parent = null)
         {
-            return Ffi.Execute(new EncryptDynamic { key = key, to = id_card, payload = payload, parent = parent });
+            return Ffi.Execute(new EncryptDynamic { Key = key, To = id_card, Payload = payload, Parent = parent });
         }
 
         public static Envelope<T> DecryptMessage<T>(string message, string key)
         {
-            return JsonConvert.DeserializeObject<Envelope<T>>(Ffi.Execute(new Decrypt { msg = message, key = key }));
+            return JsonConvert.DeserializeObject<Envelope<T>>(Ffi.Execute(new Decrypt { Msg = message, Key = key }));
         }
     }
 }

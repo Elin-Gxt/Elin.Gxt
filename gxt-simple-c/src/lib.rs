@@ -4,6 +4,10 @@ use std::os::raw::c_char;
 use gxt::GxtError;
 use serde::Deserialize;
 
+const STRING_ALLOC_ERROR: c_int = 3;
+const PROCESSING_ERROR: c_int = 2;
+const DESERIALIZATION_ERROR: c_int = 1;
+
 #[derive(Deserialize)]
 #[serde(tag = "action")]
 pub enum Request {
@@ -68,13 +72,13 @@ pub unsafe extern "C" fn gxt_execute(input: *const c_char, result: *mut c_int) -
             if let Ok(cstr_out) = CString::new(output) {
                 return cstr_out.into_raw();
             } else {
-                unsafe { *result = 3 };
+                unsafe { *result = STRING_ALLOC_ERROR };
             }
         } else {
-            unsafe { *result = 2 };
+            unsafe { *result = PROCESSING_ERROR };
         }
     } else {
-        unsafe { *result = 1 };
+        unsafe { *result = DESERIALIZATION_ERROR };
     }
     std::ptr::null_mut()
 }

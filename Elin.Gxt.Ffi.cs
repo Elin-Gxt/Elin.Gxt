@@ -3,6 +3,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Newtonsoft.Json;
 
+#nullable enable
+
 namespace Elin.Gxt
 {
     static class Native
@@ -21,73 +23,106 @@ namespace Elin.Gxt
         public int ErrorCode { get; set; }
     }
 
-    internal class MakeKey {
-        public string action { get; private set; } = "MakeKey";
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+    internal class MakeKey
+    {
+        [JsonProperty(PropertyName = "action")]
+        public string Action { get; } = "MakeKey";
     }
     internal class MakeIdCard<T>
     {
-        public string action { get; private set; } = "MakeIdCard";
-        public string key { get; set; }
-        public T meta {  get; set; }
+        [JsonProperty(PropertyName = "action")]
+        public string Action { get; } = "MakeIdCard";
+        [JsonProperty(PropertyName = "key")]
+        public string Key { get; set; }
+        [JsonProperty(PropertyName = "meta")]
+        public T Meta { get; set; }
     }
     internal class MakeIdCardDynamic
     {
-        public string action { get; private set; } = "MakeIdCard";
-        public string key { get; set; }
-        public dynamic meta {  get; set; }
+        [JsonProperty(PropertyName = "action")]
+        public string Action { get; } = "MakeIdCard";
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+        [JsonProperty(PropertyName = "key")]
+        public string Key { get; set; }
+        [JsonProperty(PropertyName = "meta")]
+        public dynamic Meta { get; set; }
     }
     internal class Verify
     {
-        public string action { get; private set; } = "Verify";
-        public string msg { get; set; }
+        [JsonProperty(PropertyName = "action")]
+        public string Action { get; private set; } = "Verify";
+        [JsonProperty(PropertyName = "msg")]
+        public string Msg { get; set; }
     }
     internal class Encrypt<T>
     {
-        public string action { get; private set; } = "Encrypt";
-        public string key { get; set; }
-        public string to {  get; set; }
-        public T payload { get; set; }
-        public string? parent { get; set; }
+        [JsonProperty(PropertyName = "action")]
+        public string Action { get; private set; } = "Encrypt";
+        [JsonProperty(PropertyName = "key")]
+        public string Key { get; set; }
+        [JsonProperty(PropertyName = "to")]
+        public string To { get; set; }
+        [JsonProperty(PropertyName = "payload")]
+        public T Payload { get; set; }
+        [JsonProperty(PropertyName = "parent")]
+        public string? Parent { get; set; }
     }
     internal class EncryptDynamic
     {
-        public string action { get; private set; } = "Encrypt";
-        public string key { get; set; }
-        public string to {  get; set; }
-        public dynamic payload { get; set; }
-        public string? parent { get; set; }
+        [JsonProperty(PropertyName = "action")]
+        public string Action { get; private set; } = "Encrypt";
+        [JsonProperty(PropertyName = "key")]
+        public string Key { get; set; }
+        [JsonProperty(PropertyName = "to")]
+        public string To { get; set; }
+        [JsonProperty(PropertyName = "payload")]
+        public dynamic Payload { get; set; }
+        [JsonProperty(PropertyName = "parent")]
+        public string? Parent { get; set; }
     }
     internal class Decrypt
     {
-        public string action { get; private set; } = "Decrypt";
-        public string key { get; set; }
-        public string msg { get; set; }
+        [JsonProperty(PropertyName = "action")]
+        public string Action { get; private set; } = "Decrypt";
+        [JsonProperty(PropertyName = "key")]
+        public string Key { get; set; }
+        [JsonProperty(PropertyName = "msg")]
+        public string Msg { get; set; }
     }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
     internal static class Ffi
     {
-        public static string Execute(MakeKey cmd) {
-            return _execute(JsonConvert.SerializeObject(cmd));
+        public static string Execute(MakeKey cmd)
+        {
+            return ExecuteInternal(JsonConvert.SerializeObject(cmd));
         }
-        public static string Execute<T>(MakeIdCard<T> cmd) {
-            return _execute(JsonConvert.SerializeObject(cmd));
+        public static string Execute<T>(MakeIdCard<T> cmd)
+        {
+            return ExecuteInternal(JsonConvert.SerializeObject(cmd));
         }
-        public static string Execute(MakeIdCardDynamic cmd) {
-            return _execute(JsonConvert.SerializeObject(cmd));
+        public static string Execute(MakeIdCardDynamic cmd)
+        {
+            return ExecuteInternal(JsonConvert.SerializeObject(cmd));
         }
-        public static string Execute(Verify cmd) {
-            return _execute(JsonConvert.SerializeObject(cmd));
+        public static string Execute(Verify cmd)
+        {
+            return ExecuteInternal(JsonConvert.SerializeObject(cmd));
         }
-        public static string Execute<T>(Encrypt<T> cmd) {
-            return _execute(JsonConvert.SerializeObject(cmd));
+        public static string Execute<T>(Encrypt<T> cmd)
+        {
+            return ExecuteInternal(JsonConvert.SerializeObject(cmd));
         }
-        public static string Execute(EncryptDynamic cmd) {
-            return _execute(JsonConvert.SerializeObject(cmd));
+        public static string Execute(EncryptDynamic cmd)
+        {
+            return ExecuteInternal(JsonConvert.SerializeObject(cmd));
         }
-        public static string Execute(Decrypt cmd) {
-            return _execute(JsonConvert.SerializeObject(cmd));
+        public static string Execute(Decrypt cmd)
+        {
+            return ExecuteInternal(JsonConvert.SerializeObject(cmd));
         }
-        static string _execute(string s)
+        static string ExecuteInternal(string s)
         {
 #if DEBUG
             UnityEngine.Debug.Log($"GXT::EXECUTE: {s}");
